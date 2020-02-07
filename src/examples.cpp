@@ -255,9 +255,9 @@ void computeSingleKinematicsForDVCSObservable() {
                     pObservable);
 
     // Print results
-    PARTONS::Partons::getInstance()->getLoggerManager()->info("main", __func__,
-            observableResult.toString());
-
+    // PARTONS::Partons::getInstance()->getLoggerManager()->info("main", __func__,
+    //         observableResult.toString());
+    std::cout<<observableResult.getValue()<<std::endl;
     // Remove pointer references
     // Module pointers are managed by PARTONS
     PARTONS::Partons::getInstance()->getModuleObjectFactory()->updateModulePointerReference(

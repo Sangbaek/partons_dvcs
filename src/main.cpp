@@ -42,26 +42,27 @@ int main(int argc, char** argv) {
         // ******************************************************
 
         // You need to provide at least one scenario via executable argument
-        if (argc <= 1) {
+        if (argc < 1) {
 
             throw ElemUtils::CustomException("main", __func__,
                     "Missing argument, please provide one or more than one XML scenario file.");
         }
 
-        // Parse arguments to retrieve xml file path list.
-        //std::vector<std::string> xmlScenarioFilePathList = parseArguments(argc,
-        //        argv);
+        else if (argc >1){
+            // Parse arguments to retrieve xml file path list.
+            std::vector<std::string> xmlScenarioFilePathList = parseArguments(argc,
+                   argv);
 
-        // Retrieve automation service parse scenario xml file and play it.
-        //PARTONS::AutomationService* pAutomationService =
-        //        pPartons->getServiceObjectRegistry()->getAutomationService();
+            // Retrieve automation service parse scenario xml file and play it.
+            PARTONS::AutomationService* pAutomationService =
+                   pPartons->getServiceObjectRegistry()->getAutomationService();
 
-        //for (unsigned int i = 0; i < xmlScenarioFilePathList.size(); i++) {
-        //    PARTONS::Scenario* pScenario = pAutomationService->parseXMLFile(
-        //            xmlScenarioFilePathList[i]);
-        //    pAutomationService->playScenario(pScenario);
-        //}
-
+            for (unsigned int i = 0; i < xmlScenarioFilePathList.size(); i++) {
+               PARTONS::Scenario* pScenario = pAutomationService->parseXMLFile(
+                       xmlScenarioFilePathList[i]);
+               pAutomationService->playScenario(pScenario);
+            }
+        }
         // ******************************************************
         // RUN CPP CODE *****************************************
         // ******************************************************
@@ -70,9 +71,9 @@ int main(int argc, char** argv) {
         // To learn how you can use PARTONS library study provided examples of functions to be found in
         // include/examples.h (header) and src/examples.cpp (source) files.
         // To run these examples just call them here, e.g.:
-
-        computeSingleKinematicsForGPD();
-
+        else if(argc==1){
+            computeSingleKinematicsForDVCSObservable();
+        }
         // Note, that you may need to comment out the part responsible for the running of XML scenarios.
 
     }
