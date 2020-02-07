@@ -1,0 +1,4 @@
+bin/PARTONS*
+bin/tmp/
+/.settings/
+/.externalToolBuilders/

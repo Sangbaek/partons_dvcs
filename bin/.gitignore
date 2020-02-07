@@ -1,0 +1,8 @@
+*/
+*
+!.gitignore
+!.keep
+/PARTONS_release
+/PARTONS_example
+/PARTONS_dvcs
+/tmp
